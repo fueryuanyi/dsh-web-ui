@@ -370,9 +370,14 @@ export default function defineSkinHooks() {
       range.setAttribute("aria-label", "推理强度滑动变阻器")
       control.append(ticks, tooltip, range)
       const mountSlider = () => {
-        const seat = doc.querySelector("[data-composer-card]")
-        if (seat === null || seat.contains(control)) return
-        seat.append(control)
+        const card = doc.querySelector("[data-composer-card]")
+        if (card === null || card.contains(control)) return
+        // Prefer the input row's trailing area (next to the model seat,
+        // where the original conversation.input.right slot rendered); fall
+        // back to the card root.
+        const trailing = card.querySelector("[class*=trailing]")
+        const target = trailing ?? card
+        target.append(control)
       }
       const mountObserver = new MutationObserver(() => mountSlider())
       mountObserver.observe(body, { childList: true, subtree: true })
