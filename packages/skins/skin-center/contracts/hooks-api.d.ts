@@ -58,6 +58,32 @@ export interface SkinHooksContext {
    * switch (and possibly redundantly); must be idempotent.
    */
   onCleanup(fn: () => void): void
+  /**
+   * Optional interactive facet (only present when the host injected the
+   * model-selection module): the live model-directory service, so a skin can
+   * read the current model's reasoning efforts and select one. Interactive
+   * skins must guard for its absence.
+   */
+  modelDirectories?: {
+    directoryFor(sessionId: string): {
+      readonly store: {
+        subscribe(listener: () => void): () => void
+        getSnapshot(): unknown
+      }
+      load(): Promise<unknown>
+      select(selection: { provider: string; model: string; reasoningEffort?: string }): Promise<boolean>
+    } | undefined
+  }
+  /**
+   * Optional live session runtime (paired with modelDirectories): read the
+   * current session id via sessions.list.getSnapshot().current.
+   */
+  sessions?: {
+    readonly list: {
+      subscribe(listener: () => void): () => void
+      getSnapshot(): { current?: string; ids: string[] }
+    }
+  }
 }
 
 /** Contract object returned by defineSkinHooks(). */

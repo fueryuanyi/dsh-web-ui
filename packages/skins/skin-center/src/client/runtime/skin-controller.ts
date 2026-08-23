@@ -53,6 +53,15 @@ export interface SkinControllerDeps {
   fetchImpl?: typeof fetch
   /** Persist the selection (POST /active by default). */
   persist?: (id: string | null) => Promise<void>
+  /**
+   * Optional model-directory service forwarded to skin hooks (see
+   * hooks-model-directory.ts). Absent for out-of-repo/user skins: the hooks
+   * ctx then simply lacks `modelDirectories`, and interactive skins must
+   * guard for it.
+   */
+  modelDirectories?: import('./hooks-model-directory.ts').HooksModelDirectories
+  /** Live session runtime forwarded to skin hooks. */
+  sessions?: import('./hooks-model-directory.ts').HooksSessions
   /** Current light/dark theme (defaults to body[data-ds-dark-theme]). */
   themeGet?: () => 'light' | 'dark'
   /**
@@ -300,6 +309,11 @@ export function createSkinController(deps: SkinControllerDeps): SkinController {
         onCleanup: (fn: () => void) => {
           cleanups.push(fn)
         },
+        // Optional interactive facet: the live model-directory service so a
+        // skin can read reasoning efforts and select one. Only present when
+        // the host injected the model-selection module.
+        ...(deps.modelDirectories !== undefined ? { modelDirectories: deps.modelDirectories } : {}),
+        ...(deps.sessions !== undefined ? { sessions: deps.sessions } : {}),
       }
       hooks.apply(ctx)
       ledger.record(activation, 'hooks', () => {

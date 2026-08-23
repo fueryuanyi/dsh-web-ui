@@ -6,13 +6,14 @@
   "nameEn": "Liang Intensity",
   "author": "kingOfSoySauce",
   "tagline": "金铜材质 · 静默立绘 · 梁式克制",
-  "description": "滑动变阻器（Liang Intensity）外观移植：以金铜色品牌与暖黑材质为基调的安静工作皮肤，暗色下以静默立绘作背景、亮色为暖象牙纸感。本版为纯外观移植（manifest-v2 资产皮肤），保留原 bundle 的配色气质，不含其「推理强度滑块」交互脚本。",
+  "description": "滑动变阻器（Liang Intensity）移植：以金铜色品牌与暖黑材质为基调的安静工作皮肤，暗色下以立绘作背景、亮色为暖象牙纸感。通过皮肤中心 hooks 交互面实现真推理强度滑块：拖拽滑块真实修改当前模型的推理强度，联动 6 段调色板插值与立绘档位切换。",
   "tags": [
     "gold",
     "bronze",
     "minimal",
     "dark",
-    "portrait"
+    "portrait",
+    "slider"
   ],
   "accent": "#c19a49",
   "order": 16,
@@ -21,13 +22,20 @@
   "attribution": "kingOfSoySauce · 滑动变阻器",
   "license": "unlicensed source (personal adaptation)",
   "contributes": {
-    "stylesheet": "skin.css",
-    "backgroundMedia": {
-      "dark": {
-        "type": "image",
-        "src": "assets/stage-00.webp",
-        "scrim": "linear-gradient(180deg, rgba(10,10,10,0.22) 0%, rgba(17,17,17,0.34) 62%, rgba(17,17,17,0.55) 100%)"
+    "stylesheet": "skin.css"
+  },
+  "requires": {
+    "contracts": [
+      {
+        "apiVersion": "x-org.linxin666.skin-center/v1alpha1",
+        "kind": "SkinHooks"
       }
+    ]
+  },
+  "facets": {
+    "client": {
+      "entry": "hooks.mjs",
+      "apiVersion": "x-org.linxin666.skin-center/v1alpha1"
     }
   }
 }

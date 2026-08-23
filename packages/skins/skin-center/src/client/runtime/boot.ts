@@ -66,6 +66,10 @@ export interface BootOptions {
   fetchImpl?: typeof fetch
   /** Background-media priority: true suppresses skin manifest media (WE wallpaper wins). */
   suppressBackgroundMedia?: () => boolean
+  /** Optional model-directory service forwarded to skin hooks. */
+  modelDirectories?: import('./hooks-model-directory.ts').HooksModelDirectories
+  /** Live session runtime forwarded to skin hooks (current session id). */
+  sessions?: import('./hooks-model-directory.ts').HooksSessions
 }
 
 export function bootSkinRuntime(options: BootOptions = {}): SkinRuntimeStore {
@@ -80,6 +84,8 @@ export function bootSkinRuntime(options: BootOptions = {}): SkinRuntimeStore {
     apiBase,
     fetchImpl,
     suppressBackgroundMedia: options.suppressBackgroundMedia,
+    modelDirectories: options.modelDirectories,
+    sessions: options.sessions,
     // Switches fail closed to the previous skin; failures must still be
     // observable in the console (they are never thrown to the card).
     onError: (message, error) => {

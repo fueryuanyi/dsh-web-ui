@@ -52,12 +52,20 @@ declare module '@deepseek-ai/cordis' {
      * the official settings scope.
      */
     webUiSettings?: { bind<S>(spec: SettingsScopeSpec<S>): SettingsScope<S> }
+    /**
+     * Live model-directory service (provided by the model-selection client
+     * module). Threaded into skin hooks so interactive skins can read the
+     * current model's reasoning efforts and select one.
+     */
+    modelDirectories?: import('./runtime/hooks-model-directory.ts').HooksModelDirectories
+    /** Live session runtime (current session id via ctx.sessions.list). */
+    sessions?: import('./runtime/hooks-model-directory.ts').HooksSessions
   }
 }
 
 
 /** Required services: slots + locale (plugin card), theme (preview toggle), settingsScope + its transport (background scrim), and workspaces (native directory picker for wallpaper folders). */
-export const inject = ['slots', 'locale', 'theme', 'settingsScope', 'connection', 'remote', 'workspaces']
+export const inject = ['slots', 'locale', 'theme', 'settingsScope', 'connection', 'remote', 'workspaces', 'sessions', 'modelDirectories']
 
 /**
  * Register the skin-center dictionaries, the body scope attribute, and the
@@ -168,6 +176,8 @@ export function apply(ctx: ClientContext): void {
   // flip paints immediately.
   const runtime = bootSkinRuntime({
     suppressBackgroundMedia: () => wallpaper.enabled() && wallpaper.activeId() !== null && wallpaper.activeId() !== '',
+    modelDirectories: ctx.modelDirectories,
+    sessions: ctx.sessions,
   })
   ctx.effect(() => () => runtime.shutdown(), 'ui-skin-center: runtime shutdown')
   ctx.effect(

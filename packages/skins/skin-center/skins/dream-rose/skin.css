@@ -1,0 +1,35 @@
+:root {
+  --dsw-alias-bg-base: #f7f0f3;
+  --dsw-alias-bg-layer-1: #ffffff;
+  --dsw-alias-bg-layer-2: #fffdfd;
+  --dsw-alias-bg-layer-3: #fdeef3;
+  --dsw-alias-bg-module-platform: #f6e9ef;
+  --dsw-alias-bg-overlay: #ffffff;
+  --dsw-specific-input-major: #ffffff;
+  --dsw-specific-tip: #fff7fa;
+  --dsw-alias-border-l1: rgba(154, 55, 118, 0.12);
+  --dsw-alias-border-l2: rgba(154, 55, 118, 0.20);
+  --dsw-alias-label-primary: #3a1424;
+  --dsw-alias-label-secondary: #8a4a63;
+  --dsw-alias-label-tertiary: #a86b82;
+  --dsw-alias-brand-primary: #e91e63;
+  --dsw-specific-bubble: #ffffff;
+  --dsw-specific-bubble-highlight: rgba(233, 30, 99, 0.10);
+  --dsw-specific-selector: rgba(233, 30, 99, 0.06);
+  --dsw-alias-brand-text: #ffffff;
+  --dsw-alias-button-primary-hover: #f06292;
+  --dsw-alias-button-primary-dimmed: rgba(233, 30, 99, 0.12);
+  --dsw-alias-state-business-primary: #e91e63;
+  --dsw-alias-state-business-tertiary: rgba(233, 30, 99, 0.12);
+  --dsw-alias-interactive-bg-hover: rgba(233, 30, 99, 0.10);
+  --dsw-alias-interactive-bg-active: rgba(233, 30, 99, 0.18);
+  --dsw-alias-markdown-code-block: #fdeef3;
+  --dsw-alias-markdown-inline-code: rgba(233, 30, 99, 0.10);
+  --dsw-specific-sidebar-fill: #f6e9ef;
+  --dsw-specific-sidebar-nav-item-active: #f5d4e2;
+  --dsw-specific-sidebar-nav-item-hover: rgba(233, 30, 99, 0.06);
+  --dsw-alias-scrollbar-bg-l1: #e5c7d4;
+  --dsw-alias-scrollbar-bg-l2: #d9b3c4;
+  --dsw-alias-scrollbar-hover-l1: #c392ab;
+  --dsw-alias-scrollbar-hover-l2: #c392ab;
+}

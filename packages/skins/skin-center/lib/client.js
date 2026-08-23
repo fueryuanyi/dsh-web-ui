@@ -3776,7 +3776,9 @@ window.__ModuleLoader__.load({
 						},
 						onCleanup: (fn) => {
 							cleanups.push(fn);
-						}
+						},
+						...deps.modelDirectories !== void 0 ? { modelDirectories: deps.modelDirectories } : {},
+						...deps.sessions !== void 0 ? { sessions: deps.sessions } : {}
 					};
 					hooks.apply(ctx);
 					ledger.record(activation, "hooks", () => {
@@ -3941,6 +3943,8 @@ window.__ModuleLoader__.load({
 				apiBase,
 				fetchImpl,
 				suppressBackgroundMedia: options.suppressBackgroundMedia,
+				modelDirectories: options.modelDirectories,
+				sessions: options.sessions,
 				onError: (message, error) => {
 					console.error(`[skin-center] ${message}`, error);
 				}
@@ -4395,7 +4399,9 @@ window.__ModuleLoader__.load({
 			"settingsScope",
 			"connection",
 			"remote",
-			"workspaces"
+			"workspaces",
+			"sessions",
+			"modelDirectories"
 		];
 		/**
 		* Register the skin-center dictionaries, the body scope attribute, and the
@@ -4470,7 +4476,11 @@ window.__ModuleLoader__.load({
 			const wallpaper = new WallpaperController(binder.bind({ namespace: SKIN_WALLPAPER_NS }));
 			ctx.effect(() => () => wallpaper.dispose(), "ui-skin-center: wallpaper dispose");
 			installBootRestore(wallpaper);
-			const runtime = bootSkinRuntime({ suppressBackgroundMedia: () => wallpaper.enabled() && wallpaper.activeId() !== null && wallpaper.activeId() !== "" });
+			const runtime = bootSkinRuntime({
+				suppressBackgroundMedia: () => wallpaper.enabled() && wallpaper.activeId() !== null && wallpaper.activeId() !== "",
+				modelDirectories: ctx.modelDirectories,
+				sessions: ctx.sessions
+			});
 			ctx.effect(() => () => runtime.shutdown(), "ui-skin-center: runtime shutdown");
 			ctx.effect(() => wallpaper.subscribe(() => {
 				runtime.controller.refresh();

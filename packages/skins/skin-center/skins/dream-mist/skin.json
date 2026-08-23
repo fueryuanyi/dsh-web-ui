@@ -1,0 +1,24 @@
+{
+  "$schema": "https://schemas.linxin666.org/dsh-skin/v2.json",
+  "skinManifestVersion": 2,
+  "id": "dream-mist",
+  "name": "液态玻璃",
+  "nameEn": "Liquid Glass",
+  "author": "RevolutionLA",
+  "tagline": "dream-skin · mist（light）",
+  "description": "mist（mist）移植自 dsh-dream-skin 的 token 主题，接入皮肤中心热切换。",
+  "tags": [
+    "dream-skin",
+    "light",
+    "token"
+  ],
+  "accent": "#2196f3",
+  "order": 23,
+  "version": "0.1.0",
+  "sourceUrl": "https://github.com/RevolutionLA/dsh-dream-skin",
+  "attribution": "RevolutionLA · dsh-dream-skin",
+  "license": "MIT",
+  "contributes": {
+    "stylesheet": "skin.css"
+  }
+}
