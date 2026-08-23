@@ -1,0 +1,33 @@
+{
+  "$schema": "https://schemas.linxin666.org/dsh-skin/v2.json",
+  "skinManifestVersion": 2,
+  "id": "liang-intensity",
+  "name": "滑动变阻器",
+  "nameEn": "Liang Intensity",
+  "author": "kingOfSoySauce",
+  "tagline": "金铜材质 · 静默立绘 · 梁式克制",
+  "description": "滑动变阻器（Liang Intensity）外观移植：以金铜色品牌与暖黑材质为基调的安静工作皮肤，暗色下以静默立绘作背景、亮色为暖象牙纸感。本版为纯外观移植（manifest-v2 资产皮肤），保留原 bundle 的配色气质，不含其「推理强度滑块」交互脚本。",
+  "tags": [
+    "gold",
+    "bronze",
+    "minimal",
+    "dark",
+    "portrait"
+  ],
+  "accent": "#c19a49",
+  "order": 16,
+  "version": "0.1.0",
+  "sourceUrl": "https://github.com/kingOfSoySauce/dsh-liang-skin",
+  "attribution": "kingOfSoySauce · 滑动变阻器",
+  "license": "unlicensed source (personal adaptation)",
+  "contributes": {
+    "stylesheet": "skin.css",
+    "backgroundMedia": {
+      "dark": {
+        "type": "image",
+        "src": "assets/stage-00.webp",
+        "scrim": "linear-gradient(180deg, rgba(10,10,10,0.22) 0%, rgba(17,17,17,0.34) 62%, rgba(17,17,17,0.55) 100%)"
+      }
+    }
+  }
+}
