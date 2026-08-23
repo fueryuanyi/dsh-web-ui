@@ -1,4 +1,5 @@
 :root {
+  --dsw-alias-label-primary-foreground: #03211b;
   --dsw-alias-bg-base: #0e1316;
   --dsw-alias-bg-layer-1: rgba(255, 255, 255, 0.04);
   --dsw-alias-bg-layer-2: rgba(22, 32, 34, 0.85);
