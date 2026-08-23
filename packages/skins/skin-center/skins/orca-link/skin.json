@@ -27,18 +27,20 @@
     "dark": "preview/dark.png"
   },
   "contributes": {
-    "stylesheet": "skin.css",
-    "backgroundMedia": {
-      "light": {
-        "type": "image",
-        "src": "assets/light-hero-v4.webp",
-        "scrim": "linear-gradient(90deg, rgba(248,250,253,0.34) 0%, rgba(248,250,253,0.18) 46%, rgba(248,250,253,0.02) 72%), linear-gradient(180deg, rgba(248,250,253,0.03), transparent 68%, rgba(239,243,248,0.16))"
-      },
-      "dark": {
-        "type": "image",
-        "src": "assets/dark-hero-v2.webp",
-        "scrim": "linear-gradient(180deg, rgba(9,13,20,0.10) 0%, rgba(9,13,20,0.32) 60%, rgba(9,13,20,0.48) 100%)"
+    "stylesheet": "skin.css"
+  },
+  "requires": {
+    "contracts": [
+      {
+        "apiVersion": "x-org.linxin666.skin-center/v1alpha1",
+        "kind": "SkinHooks"
       }
+    ]
+  },
+  "facets": {
+    "client": {
+      "entry": "hooks.mjs",
+      "apiVersion": "x-org.linxin666.skin-center/v1alpha1"
     }
   }
 }
